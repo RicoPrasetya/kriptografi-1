@@ -93,13 +93,11 @@ JUNK FOOD AND HEALTH PROBLEMS → ZYEIFRRCIMBGBUIKYPBUFMPCLLU
 Berikut adalah contoh kode Python untuk melakukan enkripsi menggunakan Playfair Cipher:
 
 import numpy as np
-
 def create_playfair_matrix(key):
     key = key.replace("J", "I")  # Gabungkan J dengan I
     key = "".join(sorted(set(key), key=key.index))  # Hilangkan duplikasi huruf
     alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
     matrix_key = key + "".join([char for char in alphabet if char not in key])
-    
     matrix = []
     for i in range(5):
         matrix.append([matrix_key[i * 5 + j] for j in range(5)])
@@ -107,7 +105,6 @@ def create_playfair_matrix(key):
 def find_position(char, matrix):
     position = np.where(matrix == char)
     return position[0][0], position[1][0]
-
 def prepare_text(plain_text):
     plain_text = plain_text.replace("J", "I").replace(" ", "").upper()
     digrams = []
@@ -133,7 +130,6 @@ def playfair_encrypt(digrams, matrix):
         a, b = digram[0], digram[1]
         row_a, col_a = find_position(a, matrix)
         row_b, col_b = find_position(b, matrix)
-        
         if row_a == row_b:  # Huruf dalam baris yang sama
             encrypted_text.append(matrix[row_a][(col_a + 1) % 5])
             encrypted_text.append(matrix[row_b][(col_b + 1) % 5])
@@ -143,9 +139,7 @@ def playfair_encrypt(digrams, matrix):
         else:  # Persegi panjang
             encrypted_text.append(matrix[row_a][col_b])
             encrypted_text.append(matrix[row_b][col_a])
-    
     return "".join(encrypted_text)
-
 def playfair_cipher(plain_text, key):
     matrix = create_playfair_matrix(key)
     digrams = prepare_text(plain_text)
