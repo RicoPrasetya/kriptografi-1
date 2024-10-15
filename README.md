@@ -94,7 +94,6 @@ Berikut adalah contoh kode Python untuk melakukan enkripsi menggunakan Playfair 
 
 import numpy as np
 
-# Membuat matriks 5x5 dari kunci
 def create_playfair_matrix(key):
     key = key.replace("J", "I")  # Gabungkan J dengan I
     key = "".join(sorted(set(key), key=key.index))  # Hilangkan duplikasi huruf
@@ -105,13 +104,10 @@ def create_playfair_matrix(key):
     for i in range(5):
         matrix.append([matrix_key[i * 5 + j] for j in range(5)])
     return np.array(matrix)
-
-# Mencari posisi huruf di dalam matriks
 def find_position(char, matrix):
     position = np.where(matrix == char)
     return position[0][0], position[1][0]
 
-# Pisahkan teks menjadi digram
 def prepare_text(plain_text):
     plain_text = plain_text.replace("J", "I").replace(" ", "").upper()
     digrams = []
@@ -131,7 +127,6 @@ def prepare_text(plain_text):
             i += 1
     return digrams
 
-# Proses enkripsi menggunakan aturan Playfair Cipher
 def playfair_encrypt(digrams, matrix):
     encrypted_text = []
     for digram in digrams:
@@ -151,14 +146,12 @@ def playfair_encrypt(digrams, matrix):
     
     return "".join(encrypted_text)
 
-# Main function
 def playfair_cipher(plain_text, key):
     matrix = create_playfair_matrix(key)
     digrams = prepare_text(plain_text)
     encrypted_text = playfair_encrypt(digrams, matrix)
     return encrypted_text
 
-# Contoh penggunaan
 key = "TEKNIK INFORMATIKA"
 plaintext1 = "GOOD BROOM SWEEP CLEAN"
 plaintext2 = "REDWOOD NATIONAL STATE PARK"
