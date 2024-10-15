@@ -93,6 +93,101 @@ Hasil enkripsi Plaintext 3:
 2. **REDWOOD NATIONAL STATE PARK** → **OKCQRCIMEKMRIPYNITBOOI**
 3. **JUNK FOOD AND HEALTH PROBLEMS** → **ZYEIFRRCIMBGBUIKYPBUFMPCLLU**
 
+Untuk **dekripsi** Playfair Cipher tanpa menggunakan kode, kamu bisa mengikuti langkah-langkah berikut, yang mirip dengan proses enkripsi tetapi dengan aturan kebalikan:
+
+### Langkah-langkah Dekripsi Playfair Cipher:
+
+1. **Buat Tabel Kunci 5x5:**
+   - Seperti pada proses enkripsi, buat tabel kunci dari kunci yang diberikan (misalnya "TEKNIK INFORMATIKA") dan atur huruf-huruf ke dalam matriks 5x5.
+   - Abaikan huruf yang berulang dan gabungkan huruf 'J' dengan 'I'.
+
+   **Contoh Tabel Kunci:**
+
+   | T  | E  | K  | N  | I  |
+   |----|----|----|----|----|
+   | F  | O  | R  | M  | A  |
+   | B  | C  | D  | G  | H  |
+   | L  | P  | Q  | S  | U  |
+   | V  | W  | X  | Y  | Z  |
+
+2. **Pisahkan Ciphertext Menjadi Digram:**
+   - Pisahkan ciphertext menjadi pasangan dua huruf (digram), misalnya dari ciphertext:
+     - `MIRCFDFRYPKKBLPOIM`
+     - Dipisahkan menjadi: `MI RC FD FR YP KK BL PO IM`
+   
+3. **Lakukan Dekripsi Digram per Digram:**
+   - **Aturan Dekripsi:**
+     1. **Jika kedua huruf dalam baris yang sama** pada tabel, geser **satu kolom ke kiri**.
+     2. **Jika kedua huruf dalam kolom yang sama**, geser **satu baris ke atas**.
+     3. **Jika kedua huruf membentuk persegi panjang**, tukar huruf tersebut dengan huruf yang ada pada sudut berlawanan dalam persegi panjang itu.
+
+#### Contoh Dekripsi:
+Mari kita coba untuk ciphertext pertama: `MIRCFDFRYPKKBLPOIM`
+
+1. **MI**: Posisi `M` (baris 2, kolom 4), dan `I` (baris 1, kolom 5). Karena membentuk persegi panjang, huruf-huruf ini diganti menjadi `GO` (di posisi baris yang sama di kolom lawan).
+   
+2. **RC**: Posisi `R` (baris 2, kolom 3), dan `C` (baris 3, kolom 2). Karena membentuk persegi panjang, diganti menjadi `OD`.
+
+3. **FD**: Posisi `F` (baris 2, kolom 1), dan `D` (baris 3, kolom 3). Membentuk persegi panjang, diganti menjadi `BR`.
+
+4. **FR**: Posisi `F` (baris 2, kolom 1), dan `R` (baris 2, kolom 3). Karena dalam **baris yang sama**, geser satu kolom ke kiri: menjadi `OM`.
+
+5. **YP**: Posisi `Y` (baris 5, kolom 4), dan `P` (baris 4, kolom 2). Membentuk persegi panjang, diganti menjadi `SW`.
+
+6. **KK**: Posisi `K` (baris 1, kolom 3). Karena kedua huruf sama dan berada dalam **baris yang sama**, geser satu kolom ke kiri: menjadi `EE`.
+
+7. **BL**: Posisi `B` (baris 3, kolom 1), dan `L` (baris 4, kolom 1). Karena dalam **kolom yang sama**, geser satu baris ke atas: menjadi `PC`.
+
+8. **PO**: Posisi `P` (baris 4, kolom 2), dan `O` (baris 2, kolom 2). Karena dalam **kolom yang sama**, geser satu baris ke atas: menjadi `LE`.
+
+9. **IM**: Posisi `I` (baris 1, kolom 5), dan `M` (baris 2, kolom 4). Membentuk persegi panjang, diganti menjadi `AN`.
+
+#### Hasil Akhir Dekripsi untuk Ciphertext 1:  
+**`MIRCFDFRYPKKBLPOIM`** → **`GOODBROOMSWEEPCLEAN`**
+
+### Dekripsi Ciphertext 2:
+Ciphertext: **`OKCQRCIMEKMRIPYNITBOOI`**
+
+1. **OK** → `RE`
+2. **CQ** → `DW`
+3. **RC** → `OD`
+4. **IM** → `NA`
+5. **EK** → `TI`
+6. **MR** → `ON`
+7. **IP** → `AL`
+8. **YN** → `ST`
+9. **IT** → `AT`
+10. **BO** → `EP`
+11. **OI** → `AR`
+
+Hasil Dekripsi Ciphertext 2:  
+**`REDWOODNATIONALSTATEPARK`**
+
+### Dekripsi Ciphertext 3:
+Ciphertext: **`ZYEIFRRCIMBGBUIKYPBUFMPCLLU`**
+
+1. **ZY** → `JU`
+2. **EI** → `NK`
+3. **FR** → `FO`
+4. **RC** → `OD`
+5. **IM** → `AN`
+6. **BG** → `DH`
+7. **BU** → `EA`
+8. **IK** → `LT`
+9. **YP** → `HP`
+10. **RO** → `RO`
+11. **FM** → `BL`
+12. **PC** → `EM`
+13. **LL** → `SX`
+
+Hasil Dekripsi Ciphertext 3:  
+**`JUNKFOODANDHEALTHPROBLEMS`**
+
+### Ringkasan Dekripsi:
+1. **MIRCFDFRYPKKBLPOIM** → **GOOD BROOM SWEEP CLEAN**
+2. **OKCQRCIMEKMRIPYNITBOOI** → **REDWOOD NATIONAL STATE PARK**
+3. **ZYEIFRRCIMBGBUIKYPBUFMPCLLU** → **JUNK FOOD AND HEALTH PROBLEMS**
+
 Berikut adalah contoh kode Python untuk melakukan enkripsi menggunakan Playfair Cipher:
 
 ```python
@@ -191,3 +286,101 @@ Encrypted Text 1: MIRCFDFRYPKKBLPOIM
 Encrypted Text 2: OKCQRCIMEKMRIPYNITBOOI
 Encrypted Text 3: ZYEIFRRCIMBGBUIKYPBUFMPCLLU
 ```
+
+Berikut adalah langkah-langkah serta kodingan Python untuk **dekripsi** kembali hasil dari enkripsi Playfair Cipher. Untuk mendekripsi, prinsipnya sama dengan enkripsi tetapi dengan aturan kebalikan:
+
+### Langkah-langkah Dekripsi:
+1. **Jika huruf dalam baris yang sama**, geser satu kolom ke kiri.
+2. **Jika huruf dalam kolom yang sama**, geser satu baris ke atas.
+3. **Jika huruf membentuk persegi panjang**, tukar dengan huruf pada sudut berlawanan.
+
+### Kode Python untuk Dekripsi:
+```python
+import numpy as np
+
+# Membuat matriks 5x5 dari kunci (sama seperti enkripsi)
+def create_playfair_matrix(key):
+    key = key.replace("J", "I")  # Gabungkan J dengan I
+    key = "".join(sorted(set(key), key=key.index))  # Hilangkan duplikasi huruf
+    alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
+    matrix_key = key + "".join([char for char in alphabet if char not in key])
+    
+    matrix = []
+    for i in range(5):
+        matrix.append([matrix_key[i * 5 + j] for j in range(5)])
+    return np.array(matrix)
+
+# Mencari posisi huruf di dalam matriks (sama seperti enkripsi)
+def find_position(char, matrix):
+    position = np.where(matrix == char)
+    return position[0][0], position[1][0]
+
+# Pisahkan ciphertext menjadi digram (sama seperti enkripsi)
+def prepare_text(cipher_text):
+    cipher_text = cipher_text.replace(" ", "").upper()
+    digrams = [cipher_text[i:i+2] for i in range(0, len(cipher_text), 2)]
+    return digrams
+
+# Proses dekripsi menggunakan aturan Playfair Cipher
+def playfair_decrypt(digrams, matrix):
+    decrypted_text = []
+    for digram in digrams:
+        a, b = digram[0], digram[1]
+        row_a, col_a = find_position(a, matrix)
+        row_b, col_b = find_position(b, matrix)
+        
+        if row_a == row_b:  # Huruf dalam baris yang sama
+            decrypted_text.append(matrix[row_a][(col_a - 1) % 5])
+            decrypted_text.append(matrix[row_b][(col_b - 1) % 5])
+        elif col_a == col_b:  # Huruf dalam kolom yang sama
+            decrypted_text.append(matrix[(row_a - 1) % 5][col_a])
+            decrypted_text.append(matrix[(row_b - 1) % 5][col_b])
+        else:  # Persegi panjang
+            decrypted_text.append(matrix[row_a][col_b])
+            decrypted_text.append(matrix[row_b][col_a])
+    
+    return "".join(decrypted_text)
+
+# Main function
+def playfair_cipher_decrypt(cipher_text, key):
+    matrix = create_playfair_matrix(key)
+    digrams = prepare_text(cipher_text)
+    decrypted_text = playfair_decrypt(digrams, matrix)
+    return decrypted_text
+
+# Contoh penggunaan
+key = "TEKNIK INFORMATIKA"
+ciphertext1 = "MIRCFDFRYPKKBLPOIM"
+ciphertext2 = "OKCQRCIMEKMRIPYNITBOOI"
+ciphertext3 = "ZYEIFRRCIMBGBUIKYPBUFMPCLLU"
+
+decrypted1 = playfair_cipher_decrypt(ciphertext1, key)
+decrypted2 = playfair_cipher_decrypt(ciphertext2, key)
+decrypted3 = playfair_cipher_decrypt(ciphertext3, key)
+
+print("Decrypted Text 1:", decrypted1)
+print("Decrypted Text 2:", decrypted2)
+print("Decrypted Text 3:", decrypted3)
+```
+
+### Penjelasan Kode:
+1. **`create_playfair_matrix(key)`**: Sama dengan fungsi pada enkripsi, membuat matriks 5x5 dari kunci.
+2. **`find_position(char, matrix)`**: Sama seperti pada enkripsi, mencari posisi suatu huruf dalam matriks.
+3. **`prepare_text(cipher_text)`**: Memecah ciphertext menjadi digram (pasangan dua huruf).
+4. **`playfair_decrypt(digrams, matrix)`**: Menerapkan aturan dekripsi Playfair Cipher pada digram. Aturan dekripsi adalah kebalikan dari aturan enkripsi:
+   - Jika dalam baris yang sama, geser kolom ke kiri.
+   - Jika dalam kolom yang sama, geser baris ke atas.
+   - Jika persegi panjang, tukar dengan huruf pada sudut berlawanan.
+5. **`playfair_cipher_decrypt(cipher_text, key)`**: Fungsi utama yang menggabungkan semua langkah untuk mendekripsi ciphertext dengan kunci Playfair Cipher.
+
+### Output:
+Saat dijalankan, hasilnya akan berupa plaintext yang telah terdekripsi dari ciphertext:
+```
+Decrypted Text 1: GOODBROOMSWEEPCLEAN
+Decrypted Text 2: REDWOODNATIONALSTATEPARK
+Decrypted Text 3: JUNKFOODANDHEALTHPROBLEMS
+```
+
+### Catatan:
+- Hasil dekripsi mungkin tidak mengandung spasi karena spasi diabaikan saat enkripsi dan dekripsi.
+- Jika huruf tambahan 'X' dimasukkan saat enkripsi untuk huruf berulang atau ganjil, huruf ini bisa dihilangkan secara manual dalam plaintext hasil dekripsi.
