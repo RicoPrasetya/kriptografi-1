@@ -8,9 +8,13 @@ Menambahkan sisa huruf abjad yang belum muncul: B, C, D, G, H, L, P, Q, S, U, V,
 Tabel Playfair menjadi:
 
 T	E	K	N	I
+
 F	O	R	M	A
+
 B	C	D	G	H
+
 L	P	Q	S	U
+
 V	W	X	Y	Z
 
 2. Pisahkan Plaintext menjadi Digram
